@@ -81,7 +81,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const signInButton = document.querySelector('#signIn #signInButton');
-      const signUpButton = document.getElementById('signUpButton');
+      const signUpButton = document.querySelector('#signup button[type="submit"]');
+      const toggleSignUpButton = document.getElementById('signUpButton');
+      const toggleSignInButton = document.querySelector('#signup .links button');
       const signInForm = document.getElementById('signIn');
       const signUpForm = document.getElementById('signup');
     
@@ -91,22 +93,22 @@
         window.location.href = 'index.html';
       });
     
+      // Redirect to index.html when the sign up button is clicked
+      signUpButton.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent form submission
+        window.location.href = 'index.html';
+      });
+    
       // Switch to sign up form
-      signUpButton.addEventListener('click', function() {
+      toggleSignUpButton.addEventListener('click', function() {
         signInForm.style.display = 'none';
         signUpForm.style.display = 'block';
       });
     
-      // Switch to sign in form from sign up form
-      document.querySelector('#signup .links button').addEventListener('click', function() {
+      // Switch to sign in form
+      toggleSignInButton.addEventListener('click', function() {
         signUpForm.style.display = 'none';
         signInForm.style.display = 'block';
-      });
-    
-      // Switch to sign up form from sign in form (if needed)
-      document.querySelector('#signIn .links button').addEventListener('click', function() {
-        signInForm.style.display = 'none';
-        signUpForm.style.display = 'block';
       });
     });
     </script>
